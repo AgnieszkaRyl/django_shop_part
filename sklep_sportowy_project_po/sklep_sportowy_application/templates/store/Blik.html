@@ -1,0 +1,50 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            background-image: url('{% static 'images/blik_background.png'%}');
+        }
+        .blik_background{
+                margin: 0;
+                top: 50%;
+                position: absolute;
+                left: 50%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%);
+        }
+        .btn {
+            font-size: 25px;
+            background-color: black;
+            color: white;
+            padding: 12px;
+        }
+        input[type=text]{
+            padding: 12px 20px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 25px
+        }
+
+    </style>
+</head>
+<body>
+    <div class="blik_background">
+        <form>
+            <input type="text" placeholder="Wpisz kod blik" name="blik" >
+<!--        <button class="btn">Zapłać</button>-->
+            <a onclick="myFunction()" href="{% url 'payment_menage' %}" class="btn btn-outline-success">Try it</a>
+        </form>
+    </div>
+</body>
+<script>
+function myFunction() {
+  alert("Zapłacono");
+}
+</script>
+{% endblock content %}

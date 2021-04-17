@@ -1,0 +1,52 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="box-element" id="form-wrapper">
+            <form id="form">
+                <div id="shipping-info">
+                        <hr>
+						<p>Wysyłka:</p>
+						<hr>
+						<div class="form-field">
+							<input class="form-control" type="text" name="address" placeholder="Ulica..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="city" placeholder="Miasto..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="zipcode" placeholder="Kod pocztowy..">
+						</div>
+
+                </div>
+                <hr>
+                <input id="form-button" class="btn btn-success btn-block" type="submit" value="Kontynuuj">
+            </form>
+        </div>
+
+        <br>
+          <div class="box-element" id="payment-info">
+                  <small> Paypal Options </small>
+			      <button id="make-payment">Zapłać</button>
+          </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="box-element">
+	    <a  class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Wróć do koszyka</a>
+        <hr><h3>Podsumowanie zamówienia</h3> <hr>
+				{% for item in items%}
+                <div class="cart-row">
+					<div style="flex:2"><img class="row-image" src={{item.produktyid.image.url}}></div>
+					<div style="flex:2"><p>{{item.produktyid.nazwa}}</p></div>
+					<div style="flex:1"><p>{{item.produktyid.cena}}</p></div>
+					<div style="flex:1"><p>{{item.licznosc}}</p></div>
+				</div>
+				{% endfor %}
+                <h5>Przedmiotów:   {{order.get_cart_items}}</h5>
+				<h5>Suma:   {{order.get_cart_total|floatformat:2}} zł</h5>
+        </div>
+    </div>
+</div>
+{% endblock content %}

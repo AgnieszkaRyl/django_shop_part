@@ -1,0 +1,55 @@
+{% extends 'store/Main.html' %}
+{% load static %}
+{%block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+
+    <style>
+        .optionPay {
+    width: 30%;
+    float: left;
+            box-shadow:hsl(0, 0%, 80%) 0 0 16px;
+	background-color: #fff;
+	border-radius: 4px;
+	padding: 10px;
+}
+
+.optionPay img {
+    width: 300px;
+    height: 300px;
+}
+
+.optionPay p {
+    text-align: center;
+}
+        </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <div class="Payments">
+        <a href="{% url 'blik_option' %}" >
+        <div class="optionPay">
+            <img src="{% static  'images/blik.png' %}">
+            <p><strong>BLIK</strong></p>
+        </div>
+        </a>
+        <a href="{% url 'payment_transfer_option' %}" >
+        <div class="optionPay">
+            <img src="{% static  'images/przelew.png' %}">
+            <p><strong>PRZELEW</strong>  </p>
+        </div>
+        </a>
+        <a href="{% url 'credit_card_option' %}" >
+        <div class="optionPay">
+            <img src="{% static  'images/creditCart.png' %}">
+            <p><strong>KARTA KREDYTOWA</strong>  </p>
+        </div>
+        </a>
+    </div>
+</body>
+{% endblock content %}

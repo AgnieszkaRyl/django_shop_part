@@ -1,0 +1,35 @@
+{% extends 'store/Main.html' %}     <!-- dzieki temu mozna miec np naglowek i stopke wszedzie podpieta, PIEKNE-->
+{% load static %}
+{% block content %}
+    <div class="row">
+        {% for product in products %}   <!--to sprawia że wyświetla sie wiele plików -->
+<!--        <div class="col-lg-4">-->
+        <div class="cart-row">
+<!--            <img class="thumbnail" src="{{product.image.url}}" >-->
+            <div class="box-element product">
+                <img class="thumbnail" src="{{product.image.url}}" >
+                <a  onclick="myFunction()" href="{% url 'add_to_cart_from_store' product.id %}" style="float: right">
+                    <img  id="put_to_cart" src="{% static 'images/cart1.png' %}" >
+
+                </a>
+                <h6><strong>{{product.nazwa}}</strong></h6>
+                <hr>
+<!--                 data-action="add"-->
+<!--                <button data-product="{{product.id}}"-->
+<!--                        class="btn bth-outline-secondary add-btn update-cart" data-action="add" > Add to Cart</button>-->
+                <a class="btn btn-outline-success" onclick="myFunction()" href="{% url 'add_to_cart_from_store' product.id %}" >Dodaj do koszyka</a>
+                <h4 style="display: inline-block; float: right">{{product.cena|floatformat:2}} zł </h4>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+<script>
+function myFunction() {
+  alert("Dodano do koszyka nowy produkt");
+}
+</script>
+
+{% endblock content %}
+
+
